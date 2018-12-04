@@ -21,9 +21,9 @@ from django.urls import path
 
 
 router = routers.DefaultRouter()
-router.register(r'Tienda', views.TiendasViewSet)
-router.register(r'Producto', views.ProductosViewSet)
-router.register(r'Venta', views.VentasViewSet)
+router.register(r'Orden', views.OrdenesViewSet)
+router.register(r'Cliente', views.ClientesViewSet)
+router.register(r'Tecnico', views.TecnicosViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
