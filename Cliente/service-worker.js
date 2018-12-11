@@ -3,16 +3,20 @@ var filesToCache = [
   '/',
   '/index.html',
   '/listado.html',
+  '/orden.html',
   '/css/carrusel.css',
   '/css/main.css',
   '/css/menu.css',
+  '/css/formulario.css',
   '/img/carrusel1.png',
   '/img/carrusel2.png',
   '/img/carrusel3.png',
   '/img/icono-elevador100.png',
   '/img/todoslosdias-200.png',
   '/js/app.js',
-  '/js/carrusel.js'
+  '/js/carrusel.js',
+  'js/api.js',
+  'js/apipost2.js'
 ];
 
 self.addEventListener('install', function(e) {
