@@ -36,7 +36,7 @@ class Orden( models.Model ):
     fallas = models.TextField( max_length = 200, blank = True, null = True )
     reparaciones = models.TextField( max_length = 200, blank = True, null = True )
     piezas = models.TextField( max_length = 200, blank = True, null = True )
-    tecnico = models.ForeignKey( Tecnico , blank = True, null = True, on_delete = models.CASCADE )
+    tecnico = models.ForeignKey( Tecnico , blank = False, null = False, on_delete = models.CASCADE )
 
     def __str__( self ):
         return str( self.folio )
