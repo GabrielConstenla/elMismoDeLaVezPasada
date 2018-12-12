@@ -17,4 +17,4 @@ class TecnicoSerializer( serializers.HyperlinkedModelSerializer ):
 
     class Meta:
         model = Tecnico
-        fields = ( 'id', 'nombre', 'cliente' )
+        fields = ( 'id', 'nombre', 'cliente', 'email', 'password' )
