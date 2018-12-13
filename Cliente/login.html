@@ -15,14 +15,10 @@
       <a href="index.html" tabindex="-1"><img id="logoAscensoris" src="img/icono-elevador100.png" alt="logo ascensoris"/></a>
       <h1>Mis Ascensoris</h1>
 
-      <div id="usuario">
-        <p>Hola! <span id="usuarioLogueado"></span> gracias por iniciar sesión! (<a id="logout">logout</a>)</p>
-      </div>
-
       <ul>
         <li> <a href="index.html" tabindex="1">Inicio</a> </li>
         <li> <a href="listado.html" tabindex="2">Listado</a> </li>
-        <li> <a href="#" tabindex="3">Ayuda</a> </li>
+        <li> <a href="orden.html" tabindex="3">Ordenes</a> </li>
       </ul>
 
     </header>
@@ -59,17 +55,20 @@
 
     <main>
 
-      <h3>Bienvenidos a Mis Ascensoris</h3>
+      <form id="formLogin">
+        <label for="usuario">Usuario</label>
+        <input id="usuario" type="text" required >
 
-      <p> <b>Mis Ascensoris</b> es la empresa que está usted buscando, empresa seria asociada al gremio de ascensores, cuenta con la experiencia que aporta el trabajo continuado de dos generaciones y más de 30 años en el mercado.</p>
-      <p>Dentro del sector, somos una empresa con ansias de crecer en los próximos años; nuestro personal de gran cualificación y entusiasmo, altamente formado y especializado con años de experiencia en nuestra empresa, es el patrimonio más preciado de Mis Ascensoris.</p>
-      <p>Nos dedicamos al <b>mantenimiento</b> y <b>reparación</b> de ascensores en Chile, reformas y modernizaciones de todo tipo de ascensores</p>
+        <br>
 
-      <div id="contenedortodoslosdias">
-        <h3>Atención 24/7 todos los días del año</h3>
-        <img id="todoslosdias" src="img/todoslosdias-200.png" alt="atencion todos los dias">
-      </div>
+        <label for="password">Password</label>
+        <input id="password" type="password" required >
 
+        <br>
+
+        <button id="btnLogin">Iniciar Sesión</button>
+
+      </form>
 
     </main>
     <footer>
@@ -100,11 +99,11 @@
           </tr>
       </table>
     </footer>
-
     <script src="js/app.js"></script>
     <script src="js/carrusel.js"></script>
-    <script src="js/logout.js"></script>
-    <script src="js/usuarioLogueado.js"></script>
-    
+    <script src="js/login.js"></script>
+  </body>
+</html>
+
   </body>
 </html>

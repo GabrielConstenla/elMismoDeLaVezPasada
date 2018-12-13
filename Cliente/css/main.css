@@ -19,7 +19,7 @@ body{
 	box-sizing: border-box;
   background: rgb(207, 216, 220);
   font-family: 'Courier New';
-  font-size: 16px;
+  font-size: 18px;
 }
 
 header{
@@ -128,9 +128,16 @@ footer table{
 
   main{
     background: rgb(236, 239, 241);
-    width: 80%;
+    width: 90%;
     margin: auto;
     border-radius: 8px;
+    margin-top: 5%;
+  }
+
+  main h3{
+    text-align: center;
+    margin: 0;
+    margin-top: 40px;
   }
 
   footer{
@@ -163,9 +170,9 @@ footer table{
 
   main{
     background: rgb(236, 239, 241);
-    width: 80%;
+    width: 90%;
     margin: auto;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-top: 5%;
   }
 
