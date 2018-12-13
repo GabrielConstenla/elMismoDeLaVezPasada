@@ -15,6 +15,10 @@
       <a href="index.html" tabindex="-1"><img id="logoAscensoris" src="img/icono-elevador100.png" alt="logo ascensoris"/></a>
       <h1>Mis Ascensoris</h1>
 
+      <div id="usuario">
+        <p>Hola! <span id="usuarioLogueado"></span> gracias por iniciar sesión! (<a id="logout">logout</a>)</p>
+      </div>
+
       <ul>
         <li> <a href="index.html" tabindex="1">Inicio</a> </li>
         <li> <a href="listado.html" tabindex="2">Listado</a> </li>
@@ -60,8 +64,9 @@
         <div class="contenedor_form">
 
           <label for="cliente">cliente</label>
-          <input id="cliente" tabindex="4" type="text" required
-          placeholder="Ingrese nombre del cliente">
+          <select id="cliente" tabindex="4">
+
+          </select>
 
           <br />
 
@@ -112,7 +117,7 @@
           <br />
 
           <label for="tecnico">tecnico</label>
-          <input id="tecnico" tabindex="13" type="text" required
+          <input id="tecnico" tabindex="13" type="text" readonly="readonly" required
           placeholder="Ingrese Tecnico">
 
           <br />
@@ -194,52 +199,13 @@
           </tr>
       </table>
     </footer>
-
-    <!-- <script>
-      var testForm = document.getElementById('formOrden');
-      testForm.onsubmit = function(event) {
-        event.preventDefault();
-
-        var request = new XMLHttpRequest();
-        // POST to httpbin which returns the POST data as JSON
-        request.open('POST', 'http://127.0.0.1:8000/Orden/', /* async = */ false);
-
-        // var form = document.getElementById('formOrden');
-        // var formData = new FormData( form );
-
-        var data = {};
-        var formOrden = document.getElementById("formOrden")
-        data.cliente = formOrden.cliente.value;
-        data.fecha = formOrden.fecha.value;
-        data.horaInicio = formOrden.horaInicio.value;
-        data.horaTermino = formOrden.horaTermino.value;
-        data.idAscensor = formOrden.idAscensor.value;
-        data.modeloAscensor = formOrden.modeloAscensor.value;
-        data.fallas = formOrden.fallas.value;
-        data.reparaciones = formOrden.reparaciones.value;
-        data.piezas = formOrden.piezas.value;
-        data.tecnico = formOrden.tecnico.value;
-
-        // var options = { content: formData };
-
-        request.setRequestHeader('Content-type','application/json; charset=utf-8');
-        request.send(JSON.stringify(data));
-
-        // console.log(formData);
-        // console.log(options);
-        // console.log(JSON.stringify(formData));
-        // console.log(JSON.stringify(options));
-        console.log(request.response);
-
-
-      }
-    </script> -->
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <!-- <script src="js/apipost.js"></script> -->
     <script src="js/apipost2.js"></script>
     <script src="js/app.js"></script>
     <script src="js/carrusel.js"></script>
     <script src="js/api.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/usuarioLogueado.js"></script>
+    <script src="js/orden.js"></script>
+
   </body>
 </html>

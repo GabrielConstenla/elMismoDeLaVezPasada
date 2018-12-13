@@ -25,30 +25,55 @@
 
   var mostrarTecnicos = function( tecnicos ){
 
-    var tecnicosContainer = document.getElementById("tecnicosContainer")
+    var tecnicosContainer = document.getElementById( "tecnicosContainer" );
+    var usuario = JSON.parse( localStorage.getItem( "usuarioLogueado" ) );
 
     for ( let tecnico of tecnicos ){
-      
-      var tecnicoContainer = document.createElement("div");
-      var nombreContainer = document.createElement("h3");
-      var clientesContainer = document.createElement("p");
-      var btnOrden = document.createElement("button");
 
-      console.log( tecnico )
+      if( usuario == tecnico.nombre ){
 
-      tecnicoContainer.className = "tecnicoContainer"
-      nombreContainer.innerHTML = tecnico.nombre;
-      clientesContainer.innerHTML = "<b>Clientes :</b>" + tecnico.cliente;
-      btnOrden.innerHTML = "Iniciar Orden";
-      btnOrden.href = "orden.html"
+        var tecnicoContainer = document.createElement("div");
+        var nombreContainer = document.createElement("h3");
+        var clientesContainer = document.createElement("p");
+        var btnOrden = document.createElement("button");
 
-      // Agrega los hijos
-      tecnicoContainer.appendChild( nombreContainer );
-      tecnicoContainer.appendChild( clientesContainer );
-      clientesContainer.appendChild( btnOrden );
+        console.log( tecnico )
 
-      // Agrega contenedor al html
-      tecnicosContainer.appendChild( tecnicoContainer );
+        tecnicoContainer.className = "tecnicoContainer"
+        nombreContainer.innerHTML = tecnico.nombre;
+        clientesContainer.innerHTML = "<b>Clientes :</b>" + tecnico.cliente;
+        btnOrden.innerHTML = "Iniciar Orden";
+        btnOrden.href = "orden.html"
+
+        // Agrega los hijos
+        tecnicoContainer.appendChild( nombreContainer );
+        tecnicoContainer.appendChild( clientesContainer );
+        clientesContainer.appendChild( btnOrden );
+
+        // Agrega contenedor al html
+        tecnicosContainer.appendChild( tecnicoContainer );
+
+      }
+        // var tecnicoContainer = document.createElement("div");
+        // var nombreContainer = document.createElement("h3");
+        // var clientesContainer = document.createElement("p");
+        // var btnOrden = document.createElement("button");
+        //
+        // console.log( tecnico )
+        //
+        // tecnicoContainer.className = "tecnicoContainer"
+        // nombreContainer.innerHTML = tecnico.nombre;
+        // clientesContainer.innerHTML = "<b>Clientes :</b>" + tecnico.cliente;
+        // btnOrden.innerHTML = "Iniciar Orden";
+        // btnOrden.href = "orden.html"
+        //
+        // // Agrega los hijos
+        // tecnicoContainer.appendChild( nombreContainer );
+        // tecnicoContainer.appendChild( clientesContainer );
+        // clientesContainer.appendChild( btnOrden );
+        //
+        // // Agrega contenedor al html
+        // tecnicosContainer.appendChild( tecnicoContainer );
 
     }
 
