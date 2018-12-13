@@ -1,14 +1,59 @@
 from django.db import models
 from django.utils import timezone
-
+import datetime
 # Create your models here.
 
+CIUDAD_CHOICES = (
+    ('',''),
+    ('Santiago','Santiago'),
+    ('',''),
+)
+
+COMUNA_CHOICES = (
+    ('Cerrillos','Cerrillos'),
+    ('Cerro Navia','Cerro Navia'),
+    ('Conchalí','Conchalí'),
+    ('El Bosque','El Bosque'),
+    ('Estación Central','Estación Central'),
+    ('Huechuraba','Huechuraba'),
+    ('Independencia','Independencia'),
+    ('La Cisterna','La Cisterna'),
+    ('La Florida','La Florida'),
+    ('La Pintana','La Pintana'),
+    ('La Granja','La Granja'),
+    ('La Reina','La Reina'),
+    ('Las Condes','Las Condes'),
+    ('Lo Barnechea','Lo Barnechea'),
+    ('Lo Espejo','Lo Espejo'),
+    ('Lo Prado','Lo Prado'),
+    ('Macul','Macul'),
+    ('Maipú','Maipú'),
+    ('Ñuñoa','Ñuñoa'),
+    ('Padre Hurtado','Padre Hurtado'),
+    ('Pedro Aguirre Cerda','Pedro Aguirre Cerda'),
+    ('Peñalolén','Peñalolén'),
+    # ('Pirque','Pirque'),
+    ('Providencia','Providencia'),
+    ('Pudahuel','Pudahuel'),
+    ('Puente Alto','Puente Alto'),
+    ('Quilicura','Quilicura'),
+    ('Quinta Normal','Quinta Normal'),
+    ('Recoleta','Recoleta'),
+    ('Renca','Renca'),
+    ('San Bernardo','San Bernardo'),
+    ('San Miguel','San Miguel'),
+    ('San Joaquín','San Joaquín'),
+    # ('San José de Maipo','San José de Maipo'),
+    ('San Ramón','San Ramón'),
+    ('Santiago','Santiago'),
+    ('Vitacura','Vitacura'),
+)
 class Cliente( models.Model ):
     id = models.AutoField( primary_key = True )
     nombre = models.CharField( max_length = 100, blank = False, null = False )
     direccion = models.CharField( max_length = 100, blank = False, null = False )
-    ciudad = models.CharField( max_length = 50, blank = False, null = False )
-    comuna = models.CharField( max_length = 50 )
+    ciudad = models.CharField( max_length = 50, blank = False, null = False, choices = CIUDAD_CHOICES )
+    comuna = models.CharField( max_length = 50, choices = COMUNA_CHOICES )
     telefono = models.CharField( max_length = 9 )
     correo =  models.EmailField( max_length = 50 )
 
@@ -28,7 +73,7 @@ class Tecnico( models.Model ):
 class Orden( models.Model ):
     folio = models.AutoField( primary_key = True )
     cliente = models.ForeignKey( Cliente , blank=False, null=False, on_delete = models.CASCADE )
-    fecha = models.DateField( blank = False, null = False )
+    fecha = models.DateField( default= datetime.date.today, blank = False, null = False )
     horaInicio = models.TimeField( default = timezone.localtime(timezone.now()), blank = False, null = False )
     horaTermino = models.TimeField( blank = False, null = False )
     idAscensor = models.CharField( max_length = 10, blank = False, null = False )
