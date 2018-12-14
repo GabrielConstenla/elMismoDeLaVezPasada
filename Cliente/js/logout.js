@@ -8,6 +8,7 @@ logout.addEventListener( "click", function( mouse ){
     usuario.style.visibility = "hidden";
     this.selected = true;
     localStorage.setItem( 'estadoUsuario', JSON.stringify("deslogueado") );
+    window.location.assign("index.html")
   }
   // }else {
   //   // usuario.classname = "usuario";

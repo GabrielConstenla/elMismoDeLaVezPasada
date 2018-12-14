@@ -1,32 +1,67 @@
 var loginForm = document.getElementById("formLogin")
 
-loginForm.onsubmit = function ( ){
+if ( navigator.onLine ){
 
-	var xhttp = new XMLHttpRequest();
-	var url = "http://127.0.0.1:8000/Tecnico/?format=json";
+	loginForm.onsubmit = function ( ){
+
+		var xhttp = new XMLHttpRequest();
+		var url = "https://gascensoris.pythonanywhere.com/Tecnico/?format=json";
 
 
-	xhttp.onreadystatechange = function() {
-			if( this.readyState == 4 && this.status == 200 ){
-					console.log( this.responseText );
-					var data = JSON.parse( this.responseText );
-					login( data.results );
-					console.log(data)
+		xhttp.onreadystatechange = function() {
+				if( this.readyState == 4 && this.status == 200 ){
+						// console.log( this.responseText );
+						var data = JSON.parse( this.responseText );
+						login( data.results );
+						// console.log(data)
+				}
+		}
+		xhttp.open( 'GET', url, true );
+		xhttp.send();
+
+		var login = function ( tecnicos ){
+
+			var usuario = document.getElementById("inputUsuario");
+			var password = document.getElementById("inputPassword")
+
+			for ( let tecnico of tecnicos ){
+
+				if( usuario.value === tecnico.email && password.value === tecnico.password ){
+					alert("Credenciales correctas, iniciando sesión...");
+					window.location.assign("listado.html");
+					localStorage.setItem( 'usuarioLogueado', JSON.stringify( tecnico.nombre ) );
+					localStorage.setItem( 'estadoUsuario', JSON.stringify( "logueado" ) );
+				}
+				else{
+					// alert("Usuario o contraseña incorrectos...");
+					window.location.assign("index.html");
+
+				}
+
 			}
+
+		}
+
 	}
-	xhttp.open( 'GET', url, true );
-	xhttp.send();
 
-	var login = function ( tecnicos ){
+} else {
 
-		var usuario = document.getElementById("usuario");
-		var password = document.getElementById("password")
+	loginForm.onsubmit = function ( ) {
 
-		for ( let tecnico of tecnicos ){
+		var tecnicosLocal = JSON.parse( localStorage.getItem( "localTecnicosList" ) );
+
+		var localTecnicosList = [];
+
+		localTecnicosList = tecnicosLocal.results;
+
+		var usuario = document.getElementById("inputUsuario");
+		var password = document.getElementById("inputPassword")
+
+		for( let tecnico of localTecnicosList ){
 
 			if( usuario.value === tecnico.email && password.value === tecnico.password ){
 				alert("Credenciales correctas, iniciando sesión...");
-				window.location.assign("listado.html");
+				window.location.assign(" listado.html ");
 				localStorage.setItem( 'usuarioLogueado', JSON.stringify( tecnico.nombre ) );
 				localStorage.setItem( 'estadoUsuario', JSON.stringify( "logueado" ) );
 			}
@@ -41,3 +76,45 @@ loginForm.onsubmit = function ( ){
 	}
 
 }
+
+	// loginForm.onsubmit = function ( ){
+	//
+	// 	var xhttp = new XMLHttpRequest();
+	// 	var url = "https://gascensoris.pythonanywhere.com/Tecnico/?format=json";
+	//
+	//
+	// 	xhttp.onreadystatechange = function() {
+	// 			if( this.readyState == 4 && this.status == 200 ){
+	// 					console.log( this.responseText );
+	// 					var data = JSON.parse( this.responseText );
+	// 					login( data.results );
+	// 					console.log(data)
+	// 			}
+	// 	}
+	// 	xhttp.open( 'GET', url, true );
+	// 	xhttp.send();
+	//
+	// 	var login = function ( tecnicos ){
+	//
+	// 		var usuario = document.getElementById("inputUsuario");
+	// 		var password = document.getElementById("inputPassword")
+	//
+	// 		for ( let tecnico of tecnicos ){
+	//
+	// 			if( usuario.value === tecnico.email && password.value === tecnico.password ){
+	// 				alert("Credenciales correctas, iniciando sesión...");
+	// 				window.location.assign("listado.html");
+	// 				localStorage.setItem( 'usuarioLogueado', JSON.stringify( tecnico.nombre ) );
+	// 				localStorage.setItem( 'estadoUsuario', JSON.stringify( "logueado" ) );
+	// 			}
+	// 			else{
+	// 				// alert("Usuario o contraseña incorrectos...");
+	// 				window.location.assign("index.html");
+	//
+	// 			}
+	//
+	// 		}
+	//
+	// 	}
+	//
+	// }

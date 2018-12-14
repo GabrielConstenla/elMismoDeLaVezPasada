@@ -2,21 +2,23 @@
 
   var app = {
     tecnicosList: [],
+    localTecnicosList: [],
   }
 
   var cargarDatos = function(key, label){
 
     var xhttp = new XMLHttpRequest();
-    var url = "http://127.0.0.1:8000/Tecnico/?format=json";
+    var url = "https://gascensoris.pythonanywhere.com/Tecnico/?format=json";
 
 
     xhttp.onreadystatechange = function() {
         if( this.readyState == 4 && this.status == 200 ){
-            console.log( this.responseText );
+            // console.log( this.responseText );
             var data = JSON.parse( this.responseText );
+            localStorage.setItem( "localTecnicosList", JSON.stringify( data ) );
             mostrarTecnicos( data.results );
             app.tecnicosList = data.results;
-            console.log(data)
+            // console.log(data)
         }
     }
     xhttp.open( 'GET', url, true );
@@ -35,20 +37,21 @@
         var tecnicoContainer = document.createElement("div");
         var nombreContainer = document.createElement("h3");
         var clientesContainer = document.createElement("p");
-        var btnOrden = document.createElement("button");
+        var btnOrden = document.createElement("a");
 
-        console.log( tecnico )
+        // console.log( tecnico )
 
         tecnicoContainer.className = "tecnicoContainer"
         nombreContainer.innerHTML = tecnico.nombre;
-        clientesContainer.innerHTML = "<b>Clientes :</b>" + tecnico.cliente;
+        clientesContainer.innerHTML = "<b>Clientes : </b>" + tecnico.cliente;
         btnOrden.innerHTML = "Iniciar Orden";
-        btnOrden.href = "orden.html"
+        btnOrden.setAttribute("href", "orden.html")
+
 
         // Agrega los hijos
         tecnicoContainer.appendChild( nombreContainer );
         tecnicoContainer.appendChild( clientesContainer );
-        clientesContainer.appendChild( btnOrden );
+        tecnicoContainer.appendChild( btnOrden );
 
         // Agrega contenedor al html
         tecnicosContainer.appendChild( tecnicoContainer );
@@ -79,8 +82,20 @@
 
   }
 
-  cargarDatos();
+  if( navigator.onLine ){
 
-  mostrarTecnicos( app.tecnicosList );
+    mostrarTecnicos( app.tecnicosList );
+
+    cargarDatos();
+  }
+  else{
+
+    var tecnicosLocal = JSON.parse( localStorage.getItem( "localTecnicosList" ) );
+    
+    app.localTecnicosList = tecnicosLocal.results;
+
+    mostrarTecnicos( app.localTecnicosList );
+
+  }
 
 })( );

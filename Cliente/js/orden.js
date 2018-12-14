@@ -7,15 +7,15 @@ formOrden.tecnico.value = usuario;
 var cargarDatos = function(key, label){
 
   var xhttp = new XMLHttpRequest();
-  var url = "http://127.0.0.1:8000/Tecnico/?format=json";
+  var url = "https://gascensoris.pythonanywhere.com/Tecnico/?format=json";
 
 
   xhttp.onreadystatechange = function() {
       if( this.readyState == 4 && this.status == 200 ){
-          console.log( this.responseText );
+          // console.log( this.responseText );
           var data = JSON.parse( this.responseText );
           obtenerClientes( data.results );
-          console.log(data)
+          // console.log(data)
       }
   }
   xhttp.open( 'GET', url, true );
@@ -26,15 +26,21 @@ function obtenerClientes( tecnicos ){
 
   var selectClientes = document.getElementById( "cliente" );
 
-  for( let tecnico of tecnicos ){
+  var usuario = JSON.parse( localStorage.getItem( "usuarioLogueado" ) );
 
-    for( let i in tecnico.cliente ){
-      let option = document.createElement("option");
-      option.innerHTML = tecnico.cliente[i];
-      selectClientes.appendChild(option);
+    for( let tecnico of tecnicos ){
+
+      if ( usuario == tecnico.nombre ){
+
+        for( let i in tecnico.cliente ){
+          let option = document.createElement("option");
+          option.innerHTML = tecnico.cliente[i];
+          selectClientes.appendChild(option);
+        }
+
+      }
+
     }
-
-  }
 
 }
 

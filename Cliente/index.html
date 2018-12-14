@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/carrusel.css">
 
+    <!-- MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Mis Ascensoris">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+
+
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
   </head>
 
   <body>
@@ -16,13 +29,14 @@
       <h1>Mis Ascensoris</h1>
 
       <div id="usuario">
-        <p>Hola! <span id="usuarioLogueado"></span> gracias por iniciar sesión! (<a id="logout">logout</a>)</p>
+        <p>Hola! <span id="usuarioLogueado"></span> gracias por iniciar sesión! </p>
+        (<a id="logout">logout</a>)
       </div>
 
       <ul>
         <li> <a href="index.html" tabindex="1">Inicio</a> </li>
-        <li> <a href="listado.html" tabindex="2">Listado</a> </li>
-        <li> <a href="#" tabindex="3">Ayuda</a> </li>
+        <li> <a href="#" id="menuLogin" tabindex="2">Listado</a> </li>
+        <!-- <li> <a href="#" tabindex="3">Ayuda</a> </li> -->
       </ul>
 
     </header>
@@ -105,6 +119,6 @@
     <script src="js/carrusel.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/usuarioLogueado.js"></script>
-    
+
   </body>
 </html>

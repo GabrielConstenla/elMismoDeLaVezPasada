@@ -4,6 +4,7 @@ var filesToCache = [
   '/index.html',
   '/listado.html',
   '/orden.html',
+  '/login.html',
   '/css/carrusel.css',
   '/css/main.css',
   '/css/menu.css',
@@ -15,8 +16,12 @@ var filesToCache = [
   '/img/todoslosdias-200.png',
   '/js/app.js',
   '/js/carrusel.js',
-  'js/api.js',
-  'js/apipost2.js'
+  '/js/api.js',
+  '/js/apipost2.js',
+  'js/login.js',
+  'js/logout.js',
+  'js/usuarioLogueado.js',
+  'js/orden.js'
 ];
 
 self.addEventListener('install', function(e) {

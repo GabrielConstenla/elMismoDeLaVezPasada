@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/carrusel.css">
     <link rel="stylesheet" href="css/formulario.css">
+
+    <!-- MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Mis Ascensoris">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+
+
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
   </head>
 
   <body>
@@ -16,13 +30,14 @@
       <h1>Mis Ascensoris</h1>
 
       <div id="usuario">
-        <p>Hola! <span id="usuarioLogueado"></span> gracias por iniciar sesión! (<a id="logout">logout</a>)</p>
+        <p>Hola! <span id="usuarioLogueado"></span> gracias por iniciar sesión! </p>
+        (<a id="logout">logout</a>)
       </div>
 
       <ul>
         <li> <a href="index.html" tabindex="1">Inicio</a> </li>
-        <li> <a href="listado.html" tabindex="2">Listado</a> </li>
-        <li> <a href="#" tabindex="3">Ayuda</a> </li>
+        <li> <a href="#" id="menuLogin" tabindex="2">Listado</a> </li>
+        <!-- <li> <a href="#" tabindex="3">Ayuda</a> </li> -->
       </ul>
 
     </header>
@@ -122,52 +137,8 @@
 
           <br />
 
-          <!-- <label for="txtRun">Run:</label>
-          <input id="txtRun" tabindex="5" type="text" required
-          minlength="9" maxlength="10"
-          onkeypress="runValidator()" onkeyup="runValidator()"
-          placeholder="Ingrese su run aquí"/>
-          <span id="runValidator" style="color:red"></span>
-          <br />
-
-
-          <label for="txtName">Nombres y Apellidos:</label>
-          <input id="txtName" tabindex="6" type="text" required
-           maxlength="50" minlength="2"
-           placeholder="Ingrese su nombre completo"/>
-           <span id="nameValidator" style="color:red"></span>
-           <br/>
-
-           <label for="txtTel">Teléfono:</label>
-           <input id="txtTel" tabindex="8" type="text" required
-           minlength="9" maxlength="10"
-           onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-           placeholder="Ingrese su número telefónico"/>
-           <span id="telValidator" style="color:red"></span>
-           <br />
-
-           <label for="txtRegion">Región:</label>
-           <select id="txtRegion" tabindex="9" oninput="selectCity()">
-           </select>
-           <br />
-           <label for="txtCity">Ciudad</label>
-           <select id="txtCity" tabindex="10">
-
-           </select>
-
-
-           <br />
-
-           <label for="txtTipo">Tipo de Vivienda:</label>
-           <select id="txtTipo" tabindex="11">
-               <option >Casa con patio grande</option>
-               <option >Casa con patio pequeño</option>
-               <option >Casa sin patio</option>
-               <option >Departamento</option>
-           </select>
-           <br/> -->
-
            <button id="terminarOrden">Terminar Orden</button>
+
           </div>
       </form>
     </main>
